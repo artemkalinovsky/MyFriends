@@ -2,12 +2,14 @@
 
 @interface User ()
 
-// Private interface goes here.
-
 @end
 
 @implementation User
 
-// Custom logic goes here.
+- (instancetype)initInManagedObjectContext:(NSManagedObjectContext *)managedObjectContext {
+    self = [NSEntityDescription insertNewObjectForEntityForName:[User entityName]
+                                         inManagedObjectContext:managedObjectContext];
+    return self;
+}
 
 @end

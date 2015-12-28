@@ -20,6 +20,9 @@
 		C8894ABC1C31E03900827CD5 /* UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8894ABB1C31E03900827CD5 /* UserTableViewCell.m */; };
 		C8894AC41C31E2C200827CD5 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = C8894AC01C31E2C200827CD5 /* User.m */; };
 		C8894AC51C31E2C200827CD5 /* _User.m in Sources */ = {isa = PBXBuildFile; fileRef = C8894AC31C31E2C200827CD5 /* _User.m */; };
+		C8894AC91C31E3EA00827CD5 /* CoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = C8894AC81C31E3EA00827CD5 /* CoreDataStack.m */; };
+		C8894ACD1C31EBB900827CD5 /* RandomUserWebServiceConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = C8894ACC1C31EBB900827CD5 /* RandomUserWebServiceConstants.m */; };
+		C8894AD01C31EDED00827CD5 /* RandomUserWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = C8894ACF1C31EDED00827CD5 /* RandomUserWebService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +68,12 @@
 		C8894AC01C31E2C200827CD5 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		C8894AC21C31E2C200827CD5 /* _User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _User.h; sourceTree = "<group>"; };
 		C8894AC31C31E2C200827CD5 /* _User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _User.m; sourceTree = "<group>"; };
+		C8894AC71C31E3EA00827CD5 /* CoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataStack.h; sourceTree = "<group>"; };
+		C8894AC81C31E3EA00827CD5 /* CoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataStack.m; sourceTree = "<group>"; };
+		C8894ACB1C31EBB900827CD5 /* RandomUserWebServiceConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomUserWebServiceConstants.h; sourceTree = "<group>"; };
+		C8894ACC1C31EBB900827CD5 /* RandomUserWebServiceConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RandomUserWebServiceConstants.m; sourceTree = "<group>"; };
+		C8894ACE1C31EDED00827CD5 /* RandomUserWebService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomUserWebService.h; sourceTree = "<group>"; };
+		C8894ACF1C31EDED00827CD5 /* RandomUserWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RandomUserWebService.m; sourceTree = "<group>"; };
 		F0859A37A06925CEC0DCDDE4 /* Pods-MyFriends.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFriends.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyFriends/Pods-MyFriends.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,6 +136,7 @@
 		C8535E1F1C31D22D0071096F /* MyFriends */ = {
 			isa = PBXGroup;
 			children = (
+				C8894AC61C31E35000827CD5 /* Logic */,
 				C8894ABD1C31E2C200827CD5 /* Model */,
 				C8894AB91C31E01100827CD5 /* View */,
 				C8894AB21C31DF2B00827CD5 /* ViewController */,
@@ -211,6 +221,27 @@
 				C8894AC31C31E2C200827CD5 /* _User.m */,
 			);
 			path = Machine;
+			sourceTree = "<group>";
+		};
+		C8894AC61C31E35000827CD5 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				C8894ACA1C31EB9B00827CD5 /* RandomUserAPI */,
+				C8894AC71C31E3EA00827CD5 /* CoreDataStack.h */,
+				C8894AC81C31E3EA00827CD5 /* CoreDataStack.m */,
+			);
+			path = Logic;
+			sourceTree = "<group>";
+		};
+		C8894ACA1C31EB9B00827CD5 /* RandomUserAPI */ = {
+			isa = PBXGroup;
+			children = (
+				C8894ACB1C31EBB900827CD5 /* RandomUserWebServiceConstants.h */,
+				C8894ACC1C31EBB900827CD5 /* RandomUserWebServiceConstants.m */,
+				C8894ACE1C31EDED00827CD5 /* RandomUserWebService.h */,
+				C8894ACF1C31EDED00827CD5 /* RandomUserWebService.m */,
+			);
+			path = RandomUserAPI;
 			sourceTree = "<group>";
 		};
 		F8F9989EEF38433B155FE712 /* Pods */ = {
@@ -408,7 +439,10 @@
 			files = (
 				C8894AC51C31E2C200827CD5 /* _User.m in Sources */,
 				C8535E251C31D22D0071096F /* AppDelegate.m in Sources */,
+				C8894AD01C31EDED00827CD5 /* RandomUserWebService.m in Sources */,
 				C8535E221C31D22D0071096F /* main.m in Sources */,
+				C8894ACD1C31EBB900827CD5 /* RandomUserWebServiceConstants.m in Sources */,
+				C8894AC91C31E3EA00827CD5 /* CoreDataStack.m in Sources */,
 				C8894AC41C31E2C200827CD5 /* User.m in Sources */,
 				C8894ABC1C31E03900827CD5 /* UserTableViewCell.m in Sources */,
 				C8894AB81C31DFB000827CD5 /* PeopleTableViewController.m in Sources */,

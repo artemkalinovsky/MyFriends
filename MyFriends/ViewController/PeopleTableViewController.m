@@ -7,15 +7,24 @@
 //
 
 #import "PeopleTableViewController.h"
+#import "RandomUserWebService.h"
 
 @interface PeopleTableViewController ()
-
+@property (strong, nonatomic) RandomUserWebService *randomUserWebService;
 @end
 
 @implementation PeopleTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.randomUserWebService = [[RandomUserWebService alloc] init];
+    [self.randomUserWebService fetchRandomUsersWithCompletion:^(NSArray *users, NSError *error) {
+        if (!error) {
+            NSLog(@"");
+        } else {
+
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

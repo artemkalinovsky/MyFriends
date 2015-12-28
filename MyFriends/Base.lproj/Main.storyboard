@@ -33,13 +33,13 @@
         <!--People-->
         <scene sceneID="79i-Tt-Gdq">
             <objects>
-                <tableViewController id="7fi-9F-fpk" sceneMemberID="viewController">
+                <tableViewController id="7fi-9F-fpk" customClass="PeopleTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="yV5-jt-FVg">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="60" id="SIf-r8-pKJ">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="60" id="SIf-r8-pKJ" customClass="UserTableViewCell">
                                 <rect key="frame" x="0.0" y="92" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SIf-r8-pKJ" id="pm8-hi-xAY">
@@ -77,6 +77,11 @@
                                         <constraint firstItem="XdY-a0-7IX" firstAttribute="top" secondItem="kNp-q9-9pu" secondAttribute="top" id="zT3-LG-kB7"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="userFirstNameLabel" destination="XdY-a0-7IX" id="bAA-xL-D8N"/>
+                                    <outlet property="userLastNameLabel" destination="bbZ-n1-ms0" id="SZk-Zl-wZZ"/>
+                                    <outlet property="userPhotoImageView" destination="kNp-q9-9pu" id="8d7-DK-tai"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

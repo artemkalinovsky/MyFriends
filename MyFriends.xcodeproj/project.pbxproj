@@ -16,6 +16,10 @@
 		C8535E331C31D22D0071096F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8535E311C31D22D0071096F /* LaunchScreen.storyboard */; };
 		C8535E3E1C31D22D0071096F /* MyFriendsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C8535E3D1C31D22D0071096F /* MyFriendsTests.m */; };
 		C8535E491C31D22D0071096F /* MyFriendsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C8535E481C31D22D0071096F /* MyFriendsUITests.m */; };
+		C8894AB81C31DFB000827CD5 /* PeopleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8894AB71C31DFB000827CD5 /* PeopleTableViewController.m */; };
+		C8894ABC1C31E03900827CD5 /* UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8894ABB1C31E03900827CD5 /* UserTableViewCell.m */; };
+		C8894AC41C31E2C200827CD5 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = C8894AC01C31E2C200827CD5 /* User.m */; };
+		C8894AC51C31E2C200827CD5 /* _User.m in Sources */ = {isa = PBXBuildFile; fileRef = C8894AC31C31E2C200827CD5 /* _User.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +57,14 @@
 		C8535E441C31D22D0071096F /* MyFriendsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyFriendsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8535E481C31D22D0071096F /* MyFriendsUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyFriendsUITests.m; sourceTree = "<group>"; };
 		C8535E4A1C31D22D0071096F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C8894AB61C31DFAF00827CD5 /* PeopleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleTableViewController.h; sourceTree = "<group>"; };
+		C8894AB71C31DFB000827CD5 /* PeopleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleTableViewController.m; sourceTree = "<group>"; };
+		C8894ABA1C31E03900827CD5 /* UserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTableViewCell.h; sourceTree = "<group>"; };
+		C8894ABB1C31E03900827CD5 /* UserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTableViewCell.m; sourceTree = "<group>"; };
+		C8894ABF1C31E2C200827CD5 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		C8894AC01C31E2C200827CD5 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		C8894AC21C31E2C200827CD5 /* _User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _User.h; sourceTree = "<group>"; };
+		C8894AC31C31E2C200827CD5 /* _User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _User.m; sourceTree = "<group>"; };
 		F0859A37A06925CEC0DCDDE4 /* Pods-MyFriends.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFriends.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyFriends/Pods-MyFriends.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,6 +127,9 @@
 		C8535E1F1C31D22D0071096F /* MyFriends */ = {
 			isa = PBXGroup;
 			children = (
+				C8894ABD1C31E2C200827CD5 /* Model */,
+				C8894AB91C31E01100827CD5 /* View */,
+				C8894AB21C31DF2B00827CD5 /* ViewController */,
 				C8535E231C31D22D0071096F /* AppDelegate.h */,
 				C8535E241C31D22D0071096F /* AppDelegate.m */,
 				C8535E291C31D22D0071096F /* Main.storyboard */,
@@ -151,6 +166,51 @@
 				C8535E4A1C31D22D0071096F /* Info.plist */,
 			);
 			path = MyFriendsUITests;
+			sourceTree = "<group>";
+		};
+		C8894AB21C31DF2B00827CD5 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C8894AB61C31DFAF00827CD5 /* PeopleTableViewController.h */,
+				C8894AB71C31DFB000827CD5 /* PeopleTableViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C8894AB91C31E01100827CD5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C8894ABA1C31E03900827CD5 /* UserTableViewCell.h */,
+				C8894ABB1C31E03900827CD5 /* UserTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C8894ABD1C31E2C200827CD5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C8894ABE1C31E2C200827CD5 /* Human */,
+				C8894AC11C31E2C200827CD5 /* Machine */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C8894ABE1C31E2C200827CD5 /* Human */ = {
+			isa = PBXGroup;
+			children = (
+				C8894ABF1C31E2C200827CD5 /* User.h */,
+				C8894AC01C31E2C200827CD5 /* User.m */,
+			);
+			path = Human;
+			sourceTree = "<group>";
+		};
+		C8894AC11C31E2C200827CD5 /* Machine */ = {
+			isa = PBXGroup;
+			children = (
+				C8894AC21C31E2C200827CD5 /* _User.h */,
+				C8894AC31C31E2C200827CD5 /* _User.m */,
+			);
+			path = Machine;
 			sourceTree = "<group>";
 		};
 		F8F9989EEF38433B155FE712 /* Pods */ = {
@@ -346,8 +406,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8894AC51C31E2C200827CD5 /* _User.m in Sources */,
 				C8535E251C31D22D0071096F /* AppDelegate.m in Sources */,
 				C8535E221C31D22D0071096F /* main.m in Sources */,
+				C8894AC41C31E2C200827CD5 /* User.m in Sources */,
+				C8894ABC1C31E03900827CD5 /* UserTableViewCell.m in Sources */,
+				C8894AB81C31DFB000827CD5 /* PeopleTableViewController.m in Sources */,
 				C8535E2E1C31D22D0071096F /* MyFriends.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

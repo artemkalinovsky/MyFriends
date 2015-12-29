@@ -13,4 +13,5 @@
 @property (readonly, strong, nonatomic) NSManagedObjectContext *workerManagedObjectContext;
 
 + (instancetype)sharedStack;
+- (void)saveMainContext;
 @end

@@ -51,7 +51,7 @@
     if (_persistentStoreCoordinator != nil) {
         return _persistentStoreCoordinator;
     }
-    
+
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"MyFriends.sqlite"];
     NSError *error = nil;
@@ -68,7 +68,7 @@
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
-    
+
     return _persistentStoreCoordinator;
 }
 
@@ -77,7 +77,7 @@
     if (_masterManagedObjectContext != nil) {
         return _masterManagedObjectContext;
     }
-    
+
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (!coordinator) {
         return nil;
@@ -98,9 +98,6 @@
     }
 
     _mainManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-//    if (!_mainManagedObjectContext.persistentStoreCoordinator) {
-//        [_mainManagedObjectContext setPersistentStoreCoordinator:coordinator];
-//    }
     _mainManagedObjectContext.parentContext = self.masterManagedObjectContext;
 
     return _mainManagedObjectContext;
@@ -117,9 +114,6 @@
     }
 
     _workerManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-//    if (!_workerManagedObjectContext.persistentStoreCoordinator) {
-//        [_workerManagedObjectContext setPersistentStoreCoordinator:coordinator];
-//    }
     _workerManagedObjectContext.parentContext = self.mainManagedObjectContext;
 
     return _workerManagedObjectContext;
@@ -127,15 +121,15 @@
 
 #pragma mark - Core Data Saving support
 
-- (void)saveContext {
-    NSManagedObjectContext *managedObjectContext = self.masterManagedObjectContext;
-    if (managedObjectContext != nil) {
-        NSError *error = nil;
-        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
+- (void)saveMainContext {
+    __block NSError *error = nil;
+    [self.mainManagedObjectContext performBlockAndWait:^{
+        if ([self.mainManagedObjectContext hasChanges] && ![self.mainManagedObjectContext save:&error]) {
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
+        } else if ([self.masterManagedObjectContext hasChanges] && ![self.masterManagedObjectContext save:&error]) {
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         }
-    }
+    }];
 }
 
 @end

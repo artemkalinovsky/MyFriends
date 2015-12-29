@@ -7,24 +7,43 @@
 //
 
 #import "UserTableViewCell.h"
+#import "_User.h"
+#import "User.h"
+#import "UIImageView+WebCache.h"
 
 @interface UserTableViewCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *userPhotoImageView;
 @property (weak, nonatomic) IBOutlet UILabel *userFirstNameLabel;
-
 @property (weak, nonatomic) IBOutlet UILabel *userLastNameLabel;
 @end
 
 @implementation UserTableViewCell
 
++ (nonnull NSString *)reuseIdentifier {
+    return @"userTableViewCellReuseIdentifier";
+}
+
 - (void)awakeFromNib {
-    // Initialization code
+    [super awakeFromNib];
+    self.userPhotoImageView.layer.cornerRadius = self.userPhotoImageView.frame.size.width / 2;
+    self.userPhotoImageView.clipsToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)configureWithUser:(nonnull User *)user {
+    self.userFirstNameLabel.text = user.firstName;
+    self.userLastNameLabel.text = user.lastName;
+
+    __weak typeof(self) weakSelf = self;
+    [weakSelf.userPhotoImageView sd_setImageWithURL:[NSURL URLWithString:user.photo]
+                                 placeholderImage:nil
+                                        completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                        }];
 }
 
 @end

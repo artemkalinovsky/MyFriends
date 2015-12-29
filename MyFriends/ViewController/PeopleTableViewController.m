@@ -8,49 +8,62 @@
 
 #import "PeopleTableViewController.h"
 #import "RandomUserWebService.h"
+#import "User.h"
+#import "UserTableViewCell.h"
 
 @interface PeopleTableViewController ()
-@property (strong, nonatomic) RandomUserWebService *randomUserWebService;
+@property (strong, nonatomic, nonnull) RandomUserWebService *randomUserWebService;
+@property (strong, nonatomic, nonnull) NSArray<User *> *users;
 @end
 
 @implementation PeopleTableViewController
 
+- (nonnull RandomUserWebService *)randomUserWebService {
+    if (!_randomUserWebService) {
+        _randomUserWebService = [[RandomUserWebService alloc] init];
+    }
+    return _randomUserWebService;
+}
+
+- (nonnull NSArray<User *> *)users {
+    if (!_users) {
+        _users = [[NSArray alloc] init];
+    }
+    return _users;
+}
+
+#pragma mark - UIViewController
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.randomUserWebService = [[RandomUserWebService alloc] init];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    __weak typeof(self) weakSelf = self;
     [self.randomUserWebService fetchRandomUsersWithCompletion:^(NSArray *users, NSError *error) {
         if (!error) {
-            NSLog(@"");
+            weakSelf.users = users;
+            [weakSelf.tableView reloadData];
         } else {
 
         }
     }];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
-}
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    return self.users.count;
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+    UserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[UserTableViewCell reuseIdentifier]
+                                                              forIndexPath:indexPath];
+
+    [cell configureWithUser:self.users[indexPath.row]];
     return cell;
 }
-*/
 
 @end

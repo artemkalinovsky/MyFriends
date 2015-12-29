@@ -9,9 +9,8 @@
 @import CoreData;
 
 @interface CoreDataStack : NSObject
-@property (readonly, strong, nonatomic) NSManagedObjectContext *mainManagedObjectContext;
-@property (readonly, strong, nonatomic) NSManagedObjectContext *workerManagedObjectContext;
+@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 + (instancetype)sharedStack;
-- (void)saveMainContext;
+- (void)saveManagedObjectContext;
 @end

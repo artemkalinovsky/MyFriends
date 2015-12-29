@@ -52,7 +52,7 @@
     NSMutableArray *fetchedUsers = [[NSMutableArray alloc] init];
 
     for (NSDictionary *userDictionary in users) {
-        User *user = [[User alloc] initInManagedObjectContext:[CoreDataStack sharedStack].workerManagedObjectContext];
+        User *user = [[User alloc] initInManagedObjectContext:[CoreDataStack sharedStack].managedObjectContext];
         @try {
             user.firstName = userDictionary[@"user"][@"name"][@"first"];
             user.lastName = userDictionary[@"user"][@"name"][@"last"];
@@ -60,9 +60,8 @@
             user.phone = userDictionary[@"user"][UserAttributes.phone];
             user.photo = userDictionary[@"user"][@"picture"][@"large"];
             [fetchedUsers addObject:user];
-        }
-        @catch (NSException *e) {
-
+        } @catch (NSException *e) {
+            
         }
     }
     return fetchedUsers;

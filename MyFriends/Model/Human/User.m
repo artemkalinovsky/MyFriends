@@ -8,20 +8,17 @@
 @implementation User
 
 - (instancetype)initInManagedObjectContext:(NSManagedObjectContext *)managedObjectContext {
-    self = [NSEntityDescription insertNewObjectForEntityForName:[User entityName]
-                                         inManagedObjectContext:managedObjectContext];
-    return self;
+    NSEntityDescription *userEntityDescription = [NSEntityDescription entityForName:[User entityName]
+                                                       inManagedObjectContext:managedObjectContext];
+    
+    User *user = (User *)[[NSManagedObject alloc] initWithEntity:userEntityDescription
+                                  insertIntoManagedObjectContext:nil];
+    return user;
 }
 
 - (void)saveToFriendsList {
-    User *savingUser = [[User alloc] initInManagedObjectContext:[CoreDataStack sharedStack].mainManagedObjectContext];
-    savingUser.firstName = self.firstName;
-    savingUser.lastName = self.lastName;
-    savingUser.email = self.email;
-    savingUser.phone = self.phone;
-    savingUser.photo = self.photo;
-    savingUser.isFriend = self.isFriend;
-    [[CoreDataStack sharedStack] saveMainContext];
+    [[CoreDataStack sharedStack].managedObjectContext insertObject:self];
+    [[CoreDataStack sharedStack] saveManagedObjectContext];
 }
 
 @end

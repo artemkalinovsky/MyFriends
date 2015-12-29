@@ -9,9 +9,7 @@
 #import "CoreDataStack.h"
 
 @interface CoreDataStack ()
-@property (strong, nonatomic) NSManagedObjectContext *masterManagedObjectContext;
-@property (readwrite, strong, nonatomic) NSManagedObjectContext *mainManagedObjectContext;
-@property (readwrite, strong, nonatomic) NSManagedObjectContext *workerManagedObjectContext;
+@property (readwrite, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @end
@@ -20,7 +18,7 @@
 
 #pragma mark - Core Data stack
 
-@synthesize masterManagedObjectContext = _masterManagedObjectContext;
+@synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
@@ -73,60 +71,27 @@
 }
 
 
-- (NSManagedObjectContext *)masterManagedObjectContext {
-    if (_masterManagedObjectContext != nil) {
-        return _masterManagedObjectContext;
+- (NSManagedObjectContext *)managedObjectContext {
+    if (_managedObjectContext != nil) {
+        return _managedObjectContext;
     }
-
+    
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (!coordinator) {
         return nil;
     }
-    _masterManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-    [_masterManagedObjectContext setPersistentStoreCoordinator:coordinator];
-    return _masterManagedObjectContext;
-}
+    _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    [_managedObjectContext setPersistentStoreCoordinator:coordinator];
+    return _managedObjectContext;
 
-- (NSManagedObjectContext *)mainManagedObjectContext {
-    if (_mainManagedObjectContext) {
-        return _mainManagedObjectContext;
-    }
-
-    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-    if (!coordinator) {
-        return nil;
-    }
-
-    _mainManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-    _mainManagedObjectContext.parentContext = self.masterManagedObjectContext;
-
-    return _mainManagedObjectContext;
-}
-
-- (NSManagedObjectContext *)workerManagedObjectContext {
-    if (_workerManagedObjectContext) {
-        return _workerManagedObjectContext;
-    }
-
-    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-    if (!coordinator) {
-        return nil;
-    }
-
-    _workerManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-    _workerManagedObjectContext.parentContext = self.mainManagedObjectContext;
-
-    return _workerManagedObjectContext;
 }
 
 #pragma mark - Core Data Saving support
 
-- (void)saveMainContext {
+- (void)saveManagedObjectContext {
     __block NSError *error = nil;
-    [self.mainManagedObjectContext performBlockAndWait:^{
-        if ([self.mainManagedObjectContext hasChanges] && ![self.mainManagedObjectContext save:&error]) {
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        } else if ([self.masterManagedObjectContext hasChanges] && ![self.masterManagedObjectContext save:&error]) {
+    [self.managedObjectContext performBlockAndWait:^{
+        if ([self.managedObjectContext hasChanges] && ![self.managedObjectContext save:&error]) {
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         }
     }];

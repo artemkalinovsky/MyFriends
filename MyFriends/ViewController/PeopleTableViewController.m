@@ -35,25 +35,35 @@
 
 #pragma mark - UIViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     UIRefreshControl *refreshControl = [UIRefreshControl new];
     refreshControl.triggerVerticalOffset = 60.0f;
     [refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.tableView.bottomRefreshControl = refreshControl;
+    [self refresh];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self refresh];
+- (void)viewDidDisappear:(BOOL)animated {
+    [self.tableView.bottomRefreshControl removeTarget:self
+                                               action:@selector(refresh)
+                                     forControlEvents:UIControlEventValueChanged];
+    [self saveSelectedUsers];
+    [super viewDidDisappear:animated];
 }
 
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.users[indexPath.row] saveToFriendsList];
+    User *selectedUser = self.users[indexPath.row];
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    if (!selectedUser.isFriend.boolValue) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        selectedUser.isFriend = @YES;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        selectedUser.isFriend = @NO;
+    }
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -67,24 +77,38 @@
     UserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[UserTableViewCell reuseIdentifier]
                                                               forIndexPath:indexPath];
 
-    [cell configureWithUser:self.users[indexPath.row]];
+    User *user = self.users[indexPath.row];
+    [cell configureWithUser:user];
+    cell.accessoryType = user.isFriend.boolValue ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     return cell;
 }
 
 #pragma mark - IBActions
 
 - (IBAction)refresh {
+    [self saveSelectedUsers];
     __weak typeof(self) weakSelf = self;
     [self.randomUserWebService fetchRandomUsersWithCompletion:^(NSArray *users, NSError *error) {
         if (!error) {
             weakSelf.users = users;
             [weakSelf.tableView reloadData];
         } else {
-
         }
         [weakSelf.tableView.bottomRefreshControl endRefreshing];
         [weakSelf.tableView setContentOffset:CGPointZero animated:YES];
     }];
+}
+
+#pragma mark - Private
+
+- (void)saveSelectedUsers {
+    if (self.users.count > 0) {
+        for (User *user in self.users) {
+            if (user.isFriend.boolValue) {
+                [user saveToFriendsList];
+            }
+        }
+    }
 }
 
 @end

@@ -1,6 +1,5 @@
 #import "User.h"
 #import "CoreDataStack.h"
-#import "SVProgressHUD.h"
 
 @interface User ()
 
@@ -21,7 +20,7 @@
     savingUser.email = self.email;
     savingUser.phone = self.phone;
     savingUser.photo = self.photo;
-    self.isFriend = savingUser.isFriend = @YES;
+    savingUser.isFriend = self.isFriend;
     [[CoreDataStack sharedStack] saveMainContext];
 }
 

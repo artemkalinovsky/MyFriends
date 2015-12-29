@@ -36,7 +36,7 @@
 - (void)configureWithUser:(nonnull User *)user {
     self.userNameLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstName, user.lastName];
     [self.userNameLabel boldSubstring:user.lastName];
-    self.accessoryType = user.isFriend ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+
     __weak typeof(self) weakSelf = self;
     [weakSelf.userPhotoImageView sd_setImageWithURL:[NSURL URLWithString:user.photo]
                                  placeholderImage:nil

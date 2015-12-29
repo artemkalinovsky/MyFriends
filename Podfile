@@ -5,6 +5,7 @@ target 'MyFriends' do
   pod 'AFNetworking'
   pod 'SVProgressHUD'
   pod 'SDWebImage'
+  pod 'CCBottomRefreshControl'
 end
 
 target 'MyFriendsTests' do

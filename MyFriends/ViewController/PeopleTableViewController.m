@@ -10,6 +10,7 @@
 #import "RandomUserWebService.h"
 #import "User.h"
 #import "UserTableViewCell.h"
+#import <CCBottomRefreshControl/UIScrollView+BottomRefreshControl.h>
 
 @interface PeopleTableViewController ()
 @property (strong, nonatomic, nonnull) RandomUserWebService *randomUserWebService;
@@ -36,20 +37,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIRefreshControl *refreshControl = [UIRefreshControl new];
+    refreshControl.triggerVerticalOffset = 60.0f;
+    [refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+    self.tableView.bottomRefreshControl = refreshControl;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
-    __weak typeof(self) weakSelf = self;
-    [self.randomUserWebService fetchRandomUsersWithCompletion:^(NSArray *users, NSError *error) {
-        if (!error) {
-            weakSelf.users = users;
-            [weakSelf.tableView reloadData];
-        } else {
-
-        }
-    }];
+    [self refresh];
 }
 
 #pragma mark - UITableViewDataSource
@@ -64,6 +60,22 @@
 
     [cell configureWithUser:self.users[indexPath.row]];
     return cell;
+}
+
+#pragma mark - IBActions
+
+- (IBAction)refresh {
+    __weak typeof(self) weakSelf = self;
+    [self.randomUserWebService fetchRandomUsersWithCompletion:^(NSArray *users, NSError *error) {
+        if (!error) {
+            weakSelf.users = users;
+            [weakSelf.tableView reloadData];
+        } else {
+
+        }
+        [weakSelf.tableView.bottomRefreshControl endRefreshing];
+        [weakSelf.tableView setContentOffset:CGPointZero animated:YES];
+    }];
 }
 
 @end

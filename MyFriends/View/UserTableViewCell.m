@@ -10,11 +10,11 @@
 #import "_User.h"
 #import "User.h"
 #import "UIImageView+WebCache.h"
+#import "UILabel+Boldify.h"
 
 @interface UserTableViewCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *userPhotoImageView;
-@property (weak, nonatomic) IBOutlet UILabel *userFirstNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *userLastNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @end
 
 @implementation UserTableViewCell
@@ -36,8 +36,8 @@
 }
 
 - (void)configureWithUser:(nonnull User *)user {
-    self.userFirstNameLabel.text = user.firstName;
-    self.userLastNameLabel.text = user.lastName;
+    self.userNameLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstName, user.lastName];
+    [self.userNameLabel boldSubstring:user.lastName];
 
     __weak typeof(self) weakSelf = self;
     [weakSelf.userPhotoImageView sd_setImageWithURL:[NSURL URLWithString:user.photo]

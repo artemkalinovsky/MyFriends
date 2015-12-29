@@ -19,7 +19,7 @@
 
 @implementation FriendsViewController
 
-- (NSFetchedResultsController *)fetchedResultsController {
+- (nonnull NSFetchedResultsController *)fetchedResultsController {
 
     if (_fetchedResultsController != nil) {
         return _fetchedResultsController;

@@ -86,16 +86,16 @@
 #pragma mark - IBActions
 
 - (IBAction)refresh {
-    [self saveSelectedUsers];
     __weak typeof(self) weakSelf = self;
     [self.randomUserWebService fetchRandomUsersWithCompletion:^(NSArray *users, NSError *error) {
         if (!error) {
-            weakSelf.users = users;
+            NSMutableArray<User *> *mutableUsers = [weakSelf.users mutableCopy];
+            [mutableUsers addObjectsFromArray:users];
+            weakSelf.users = [mutableUsers copy];
             [weakSelf.tableView reloadData];
         } else {
         }
         [weakSelf.tableView.bottomRefreshControl endRefreshing];
-        [weakSelf.tableView setContentOffset:CGPointZero animated:YES];
     }];
 }
 

@@ -24,6 +24,7 @@
 		C8894ACD1C31EBB900827CD5 /* RandomUserWebServiceConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = C8894ACC1C31EBB900827CD5 /* RandomUserWebServiceConstants.m */; };
 		C8894AD01C31EDED00827CD5 /* RandomUserWebService.m in Sources */ = {isa = PBXBuildFile; fileRef = C8894ACF1C31EDED00827CD5 /* RandomUserWebService.m */; };
 		C8894AD51C320B1D00827CD5 /* UILabel+Boldify.m in Sources */ = {isa = PBXBuildFile; fileRef = C8894AD41C320B1D00827CD5 /* UILabel+Boldify.m */; };
+		C8C8297A1C329C6A0026F534 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C829791C329C690026F534 /* FriendsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,8 @@
 		C8894ACF1C31EDED00827CD5 /* RandomUserWebService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RandomUserWebService.m; sourceTree = "<group>"; };
 		C8894AD31C320B1D00827CD5 /* UILabel+Boldify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Boldify.h"; sourceTree = "<group>"; };
 		C8894AD41C320B1D00827CD5 /* UILabel+Boldify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Boldify.m"; sourceTree = "<group>"; };
+		C8C829781C329C690026F534 /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
+		C8C829791C329C690026F534 /* FriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsViewController.m; sourceTree = "<group>"; };
 		F0859A37A06925CEC0DCDDE4 /* Pods-MyFriends.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyFriends.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyFriends/Pods-MyFriends.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -187,6 +190,8 @@
 			children = (
 				C8894AB61C31DFAF00827CD5 /* PeopleTableViewController.h */,
 				C8894AB71C31DFB000827CD5 /* PeopleTableViewController.m */,
+				C8C829781C329C690026F534 /* FriendsViewController.h */,
+				C8C829791C329C690026F534 /* FriendsViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -450,6 +455,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8C8297A1C329C6A0026F534 /* FriendsViewController.m in Sources */,
 				C8894AC51C31E2C200827CD5 /* _User.m in Sources */,
 				C8535E251C31D22D0071096F /* AppDelegate.m in Sources */,
 				C8894AD01C31EDED00827CD5 /* RandomUserWebService.m in Sources */,

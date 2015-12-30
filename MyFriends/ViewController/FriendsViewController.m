@@ -10,6 +10,7 @@
 #import "User.h"
 #import "CoreDataStack.h"
 #import "UserTableViewCell.h"
+#import "FriendDetailedInfoViewController.h"
 
 @interface FriendsViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *placeHolderLabel;
@@ -64,10 +65,18 @@
     }];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"toFriendDetailedInfoSegueIdentifier"]) {
+        FriendDetailedInfoViewController *destinationViewController = segue.destinationViewController;
+        destinationViewController.detailedUser = sender;
+    }
+}
+
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:@"toFriendDetailedInfoSegueIdentifier" sender:self];
+    User *user = self.fetchedResultsController.fetchedObjects[indexPath.row];
+    [self performSegueWithIdentifier:@"toFriendDetailedInfoSegueIdentifier" sender:user];
 }
 
 - (void)tableView:(UITableView *)tableView

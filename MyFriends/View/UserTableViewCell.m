@@ -29,19 +29,14 @@
     self.userPhotoImageView.clipsToBounds = YES;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-}
-
 - (void)configureWithUser:(nonnull User *)user {
     self.userNameLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstName, user.lastName];
     [self.userNameLabel boldSubstring:user.lastName];
 
-    __weak typeof(self) weakSelf = self;
-    [weakSelf.userPhotoImageView sd_setImageWithURL:[NSURL URLWithString:user.photo]
-                                 placeholderImage:nil
-                                        completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-                                        }];
+    [self.userPhotoImageView sd_setImageWithURL:[NSURL URLWithString:user.photo]
+                               placeholderImage:[UIImage imageNamed:@"user_photo_placeholder"]
+                                      completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                      }];
 }
 
 @end

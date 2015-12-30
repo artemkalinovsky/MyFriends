@@ -99,10 +99,10 @@
             </objects>
             <point key="canvasLocation" x="323" y="247"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Friend Detailed Info View Controller-->
         <scene sceneID="w7d-5k-R9N">
             <objects>
-                <tableViewController id="LOH-j5-bux" sceneMemberID="viewController">
+                <tableViewController id="LOH-j5-bux" customClass="FriendDetailedInfoViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Hfv-t5-s8e">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -117,12 +117,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="189"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fo0-Zw-hwa">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_photo_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Fo0-Zw-hwa">
                                                     <rect key="frame" x="214" y="8" width="172" height="172"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="172" id="40U-87-Zxb"/>
                                                         <constraint firstAttribute="width" constant="172" id="Lu2-Yq-nmi"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="86"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -139,14 +145,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WbO-jh-3iA">
-                                                    <rect key="frame" x="8" y="8" width="584" height="20"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <rect key="frame" x="8" y="8" width="584" height="21"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wJP-bZ-tlS">
-                                                    <rect key="frame" x="8" y="30" width="584" height="20"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <rect key="frame" x="8" y="31" width="584" height="21"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -231,6 +237,13 @@
                             <outlet property="delegate" destination="LOH-j5-bux" id="zR4-Pt-XqR"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="emailTextField" destination="Mb5-BQ-2LL" id="Hfj-sO-q58"/>
+                        <outlet property="firstNameLabel" destination="WbO-jh-3iA" id="QMg-p6-tN1"/>
+                        <outlet property="lastNameLabel" destination="wJP-bZ-tlS" id="PFJ-tn-BFZ"/>
+                        <outlet property="phoneTextField" destination="FFT-5q-Az5" id="dVf-Pt-YeZ"/>
+                        <outlet property="profilePhotoImageView" destination="Fo0-Zw-hwa" id="zFx-Qr-05G"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NUA-ds-ziP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -310,4 +323,7 @@
             <point key="canvasLocation" x="-385" y="247"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="user_photo_placeholder" width="370" height="370"/>
+    </resources>
 </document>

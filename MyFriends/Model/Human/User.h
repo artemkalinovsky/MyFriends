@@ -2,7 +2,8 @@
 
 @interface User : _User {}
 
-- (instancetype)initInManagedObjectContext:(NSManagedObjectContext *)managedObjectContext;
+- (instancetype)init;
 - (void)saveToFriendsList;
+- (void)removeFromFriendsList;
 
 @end

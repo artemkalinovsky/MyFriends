@@ -11,7 +11,6 @@
 #import "AFNetworking.h"
 #import "SVProgressHUD.h"
 #import "User.h"
-#import "CoreDataStack.h"
 
 @interface RandomUserWebService ()
 
@@ -52,7 +51,7 @@
     NSMutableArray *fetchedUsers = [[NSMutableArray alloc] init];
 
     for (NSDictionary *userDictionary in users) {
-        User *user = [[User alloc] initInManagedObjectContext:[CoreDataStack sharedStack].managedObjectContext];
+        User *user = [[User alloc] init];
         @try {
             user.firstName = userDictionary[@"user"][@"name"][@"first"];
             user.lastName = userDictionary[@"user"][@"name"][@"last"];

@@ -8,6 +8,7 @@
 
 #import "FriendDetailedInfoViewController.h"
 #import "User.h"
+#import "NSString+Validation.h"
 
 @interface FriendDetailedInfoViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *profilePhotoImageView;
@@ -31,6 +32,60 @@
             weakSelf.profilePhotoImageView.image = profileImage;
         }
     }];
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if ([textField isEqual:self.phoneTextField]) {
+        return self.emailTextField.becomeFirstResponder;
+    } else if ([textField isEqual:self.emailTextField]) {
+        return self.emailTextField.resignFirstResponder;
+    }
+    return YES;
+}
+
+#pragma mark - IBActions
+
+- (IBAction)tapOnCancelBarButtonItem:(UIBarButtonItem *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)tapOnDoneBarButtonItem:(UIBarButtonItem *)sender {
+    if ([self.phoneTextField.text isValidPhoneNumber]) {
+        self.detailedUser.phone = self.phoneTextField.text;
+    } else {
+        [self showAlertWithTitle:@"Error" andMessage:@"Wrong phone format"];
+    }
+    
+    if ([self.emailTextField.text isValidEmail]) {
+        self.detailedUser.email = self.emailTextField.text;
+    } else {
+         [self showAlertWithTitle:@"Error" andMessage:@"Wrong email format"];
+    }
+    
+    [self.detailedUser saveChanges];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - Private
+
+- (void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message {
+    UIAlertController *alertController = [UIAlertController
+                                          alertControllerWithTitle:title
+                                          message:message
+                                          preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancelAction = [UIAlertAction
+                                   actionWithTitle:@"OK"
+                                   style:UIAlertActionStyleCancel
+                                   handler:^(UIAlertAction *action)
+                                   {
+                                   }];
+    
+    [alertController addAction:cancelAction];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 @end

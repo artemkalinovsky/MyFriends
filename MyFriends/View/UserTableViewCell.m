@@ -33,10 +33,19 @@
     self.userNameLabel.text = [NSString stringWithFormat:@"%@ %@", user.firstName, user.lastName];
     [self.userNameLabel boldSubstring:user.lastName];
 
-    [self.userPhotoImageView sd_setImageWithURL:[NSURL URLWithString:user.photo]
-                               placeholderImage:[UIImage imageNamed:@"user_photo_placeholder"]
-                                      completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-                                      }];
+    __weak typeof(self) weakSelf = self;
+    self.userPhotoImageView.image = [UIImage imageNamed:@"user_photo_placeholder"];
+    [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:user.photo]
+                                                    options:0
+                                                   progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                                   }
+                                                  completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                                      if (image) {
+                                                          dispatch_async(dispatch_get_main_queue(), ^{
+                                                              weakSelf.userPhotoImageView.image = image;
+                                                          });
+                                                      }
+                                                  }];
 }
 
 @end

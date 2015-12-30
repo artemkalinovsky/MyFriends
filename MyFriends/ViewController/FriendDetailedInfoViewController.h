@@ -10,7 +10,7 @@
 
 @class User;
 
-@interface FriendDetailedInfoViewController : UITableViewController
+@interface FriendDetailedInfoViewController : UITableViewController <UITextFieldDelegate>
 
 @property (nonatomic, strong, nonnull) User *detailedUser;
 

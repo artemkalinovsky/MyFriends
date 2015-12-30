@@ -16,6 +16,7 @@
 		C8535E331C31D22D0071096F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8535E311C31D22D0071096F /* LaunchScreen.storyboard */; };
 		C8535E3E1C31D22D0071096F /* MyFriendsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C8535E3D1C31D22D0071096F /* MyFriendsTests.m */; };
 		C8535E491C31D22D0071096F /* MyFriendsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C8535E481C31D22D0071096F /* MyFriendsUITests.m */; };
+		C87927051C349A22003E9E8C /* NSString+Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = C87927041C349A22003E9E8C /* NSString+Validation.m */; };
 		C8894AB81C31DFB000827CD5 /* PeopleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8894AB71C31DFB000827CD5 /* PeopleTableViewController.m */; };
 		C8894ABC1C31E03900827CD5 /* UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8894ABB1C31E03900827CD5 /* UserTableViewCell.m */; };
 		C8894AC41C31E2C200827CD5 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = C8894AC01C31E2C200827CD5 /* User.m */; };
@@ -63,6 +64,8 @@
 		C8535E441C31D22D0071096F /* MyFriendsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyFriendsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8535E481C31D22D0071096F /* MyFriendsUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyFriendsUITests.m; sourceTree = "<group>"; };
 		C8535E4A1C31D22D0071096F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C87927031C349A22003E9E8C /* NSString+Validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Validation.h"; sourceTree = "<group>"; };
+		C87927041C349A22003E9E8C /* NSString+Validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Validation.m"; sourceTree = "<group>"; };
 		C8894AB61C31DFAF00827CD5 /* PeopleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleTableViewController.h; sourceTree = "<group>"; };
 		C8894AB71C31DFB000827CD5 /* PeopleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleTableViewController.m; sourceTree = "<group>"; };
 		C8894ABA1C31E03900827CD5 /* UserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTableViewCell.h; sourceTree = "<group>"; };
@@ -263,6 +266,8 @@
 			children = (
 				C8894AD31C320B1D00827CD5 /* UILabel+Boldify.h */,
 				C8894AD41C320B1D00827CD5 /* UILabel+Boldify.m */,
+				C87927031C349A22003E9E8C /* NSString+Validation.h */,
+				C87927041C349A22003E9E8C /* NSString+Validation.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -462,6 +467,7 @@
 			files = (
 				C8C8297A1C329C6A0026F534 /* FriendsViewController.m in Sources */,
 				C8894AC51C31E2C200827CD5 /* _User.m in Sources */,
+				C87927051C349A22003E9E8C /* NSString+Validation.m in Sources */,
 				C8535E251C31D22D0071096F /* AppDelegate.m in Sources */,
 				C8894AD01C31EDED00827CD5 /* RandomUserWebService.m in Sources */,
 				C8535E221C31D22D0071096F /* main.m in Sources */,

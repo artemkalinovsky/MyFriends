@@ -11,7 +11,7 @@
 - (instancetype)init {
     NSEntityDescription *userEntityDescription = [NSEntityDescription entityForName:[User entityName]
                                                              inManagedObjectContext:[CoreDataStack sharedStack].managedObjectContext];
-    
+
     User *user = (User *)[[NSManagedObject alloc] initWithEntity:userEntityDescription
                                   insertIntoManagedObjectContext:nil];
     return user;
@@ -19,6 +19,10 @@
 
 - (void)saveToFriendsList {
     [[CoreDataStack sharedStack].managedObjectContext insertObject:self];
+    [[CoreDataStack sharedStack] saveManagedObjectContext];
+}
+
+- (void)saveChanges {
     [[CoreDataStack sharedStack] saveManagedObjectContext];
 }
 
@@ -34,9 +38,13 @@
                                                    }
                                                   completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
                                                       if (image) {
-                                                          completion(image, nil);
+                                                          dispatch_async(dispatch_get_main_queue(), ^{
+                                                              completion(image, nil);
+                                                          });
                                                       } else {
-                                                          completion(nil, error);
+                                                          dispatch_async(dispatch_get_main_queue(), ^{
+                                                              completion(nil, error);
+                                                          });
                                                       }
                                                   }];
 }

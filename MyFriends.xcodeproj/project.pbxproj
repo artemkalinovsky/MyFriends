@@ -16,6 +16,9 @@
 		C8535E331C31D22D0071096F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8535E311C31D22D0071096F /* LaunchScreen.storyboard */; };
 		C8535E3E1C31D22D0071096F /* MyFriendsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C8535E3D1C31D22D0071096F /* MyFriendsTests.m */; };
 		C8535E491C31D22D0071096F /* MyFriendsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C8535E481C31D22D0071096F /* MyFriendsUITests.m */; };
+		C866D95F1C34A64300197C5D /* Simulator Screen Shot 31 Dec 2015 01.51.24.png in Resources */ = {isa = PBXBuildFile; fileRef = C866D95C1C34A64300197C5D /* Simulator Screen Shot 31 Dec 2015 01.51.24.png */; };
+		C866D9601C34A64300197C5D /* Simulator Screen Shot 31 Dec 2015 01.52.58.png in Resources */ = {isa = PBXBuildFile; fileRef = C866D95D1C34A64300197C5D /* Simulator Screen Shot 31 Dec 2015 01.52.58.png */; };
+		C866D9611C34A64300197C5D /* Simulator Screen Shot 31 Dec 2015 01.53.11.png in Resources */ = {isa = PBXBuildFile; fileRef = C866D95E1C34A64300197C5D /* Simulator Screen Shot 31 Dec 2015 01.53.11.png */; };
 		C87927051C349A22003E9E8C /* NSString+Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = C87927041C349A22003E9E8C /* NSString+Validation.m */; };
 		C8894AB81C31DFB000827CD5 /* PeopleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8894AB71C31DFB000827CD5 /* PeopleTableViewController.m */; };
 		C8894ABC1C31E03900827CD5 /* UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C8894ABB1C31E03900827CD5 /* UserTableViewCell.m */; };
@@ -64,6 +67,9 @@
 		C8535E441C31D22D0071096F /* MyFriendsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyFriendsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8535E481C31D22D0071096F /* MyFriendsUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyFriendsUITests.m; sourceTree = "<group>"; };
 		C8535E4A1C31D22D0071096F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C866D95C1C34A64300197C5D /* Simulator Screen Shot 31 Dec 2015 01.51.24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot 31 Dec 2015 01.51.24.png"; sourceTree = "<group>"; };
+		C866D95D1C34A64300197C5D /* Simulator Screen Shot 31 Dec 2015 01.52.58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot 31 Dec 2015 01.52.58.png"; sourceTree = "<group>"; };
+		C866D95E1C34A64300197C5D /* Simulator Screen Shot 31 Dec 2015 01.53.11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot 31 Dec 2015 01.53.11.png"; sourceTree = "<group>"; };
 		C87927031C349A22003E9E8C /* NSString+Validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Validation.h"; sourceTree = "<group>"; };
 		C87927041C349A22003E9E8C /* NSString+Validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Validation.m"; sourceTree = "<group>"; };
 		C8894AB61C31DFAF00827CD5 /* PeopleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeopleTableViewController.h; sourceTree = "<group>"; };
@@ -126,6 +132,7 @@
 		C8535E141C31D22D0071096F = {
 			isa = PBXGroup;
 			children = (
+				C866D95B1C34A64300197C5D /* Screenshots */,
 				C8535E1F1C31D22D0071096F /* MyFriends */,
 				C8535E3C1C31D22D0071096F /* MyFriendsTests */,
 				C8535E471C31D22D0071096F /* MyFriendsUITests */,
@@ -189,6 +196,16 @@
 				C8535E4A1C31D22D0071096F /* Info.plist */,
 			);
 			path = MyFriendsUITests;
+			sourceTree = "<group>";
+		};
+		C866D95B1C34A64300197C5D /* Screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				C866D95C1C34A64300197C5D /* Simulator Screen Shot 31 Dec 2015 01.51.24.png */,
+				C866D95D1C34A64300197C5D /* Simulator Screen Shot 31 Dec 2015 01.52.58.png */,
+				C866D95E1C34A64300197C5D /* Simulator Screen Shot 31 Dec 2015 01.53.11.png */,
+			);
+			path = Screenshots;
 			sourceTree = "<group>";
 		};
 		C8894AB21C31DF2B00827CD5 /* ViewController */ = {
@@ -390,7 +407,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C866D9611C34A64300197C5D /* Simulator Screen Shot 31 Dec 2015 01.53.11.png in Resources */,
+				C866D95F1C34A64300197C5D /* Simulator Screen Shot 31 Dec 2015 01.51.24.png in Resources */,
 				C8535E331C31D22D0071096F /* LaunchScreen.storyboard in Resources */,
+				C866D9601C34A64300197C5D /* Simulator Screen Shot 31 Dec 2015 01.52.58.png in Resources */,
 				C8535E301C31D22D0071096F /* Assets.xcassets in Resources */,
 				C8535E2B1C31D22D0071096F /* Main.storyboard in Resources */,
 			);

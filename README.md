@@ -4,7 +4,7 @@ App that helps you find friends on https://randomuser.me/ :]
 <b> Requirements </b>
  - iOS 8 +
  - Objective-C (with latest features of 2015)
- - Xcode 7.2 
+ - Xcode 7.2 +
 
 <table style="width:100%">
   <tr>

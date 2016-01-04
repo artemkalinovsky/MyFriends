@@ -5,7 +5,8 @@
 @interface User : _User {}
 
 - (instancetype)init;
-- (void)saveToFriendsList;
+- (instancetype)initWithJSON:(NSDictionary *)jsonSerializedUser;
++ (void)saveToFriendsMarkedUsersInArray:(NSArray<User *> *)usersArray;
 - (void)saveChanges;
 - (void)removeFromFriendsList;
 - (void)fetchProfilePhotoWithCompletion:(void (^)(UIImage *profilePhoto, NSError *error))completion;

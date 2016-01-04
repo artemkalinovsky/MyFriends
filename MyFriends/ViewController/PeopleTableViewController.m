@@ -48,7 +48,8 @@
     [self.tableView.bottomRefreshControl removeTarget:self
                                                action:@selector(refresh)
                                      forControlEvents:UIControlEventValueChanged];
-    [self saveSelectedUsers];
+
+    [User saveToFriendsMarkedUsersInArray:self.users];
     [super viewDidDisappear:animated];
 }
 
@@ -93,22 +94,9 @@
             [mutableUsers addObjectsFromArray:users];
             weakSelf.users = [mutableUsers copy];
             [weakSelf.tableView reloadData];
-        } else {
         }
         [weakSelf.tableView.bottomRefreshControl endRefreshing];
     }];
-}
-
-#pragma mark - Private
-
-- (void)saveSelectedUsers {
-    if (self.users.count > 0) {
-        for (User *user in self.users) {
-            if (user.isFriend.boolValue) {
-                [user saveToFriendsList];
-            }
-        }
-    }
 }
 
 @end

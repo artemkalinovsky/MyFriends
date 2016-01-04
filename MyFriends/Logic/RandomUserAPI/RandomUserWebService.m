@@ -51,13 +51,8 @@
     NSMutableArray *fetchedUsers = [[NSMutableArray alloc] init];
 
     for (NSDictionary *userDictionary in users) {
-        User *user = [[User alloc] init];
         @try {
-            user.firstName = userDictionary[@"user"][@"name"][@"first"];
-            user.lastName = userDictionary[@"user"][@"name"][@"last"];
-            user.email = userDictionary[@"user"][UserAttributes.email];
-            user.phone = userDictionary[@"user"][UserAttributes.phone];
-            user.photo = userDictionary[@"user"][@"picture"][@"large"];
+            User *user = [[User alloc] initWithJSON:userDictionary];
             [fetchedUsers addObject:user];
         } @catch (NSException *e) {
             

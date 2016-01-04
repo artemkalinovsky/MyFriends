@@ -12,14 +12,31 @@
     NSEntityDescription *userEntityDescription = [NSEntityDescription entityForName:[User entityName]
                                                              inManagedObjectContext:[CoreDataStack sharedStack].managedObjectContext];
 
-    User *user = (User *)[[NSManagedObject alloc] initWithEntity:userEntityDescription
-                                  insertIntoManagedObjectContext:nil];
-    return user;
+    self = (User *)[[NSManagedObject alloc] initWithEntity:userEntityDescription
+                            insertIntoManagedObjectContext:nil];
+    return self;
 }
 
-- (void)saveToFriendsList {
-    [[CoreDataStack sharedStack].managedObjectContext insertObject:self];
-    [[CoreDataStack sharedStack] saveManagedObjectContext];
+- (instancetype)initWithJSON:(NSDictionary *)jsonSerializedUser {
+    if (self = [self init]) {
+        self.firstName = jsonSerializedUser[@"user"][@"name"][@"first"];
+        self.lastName = jsonSerializedUser[@"user"][@"name"][@"last"];
+        self.email = jsonSerializedUser[@"user"][UserAttributes.email];
+        self.phone = jsonSerializedUser[@"user"][UserAttributes.phone];
+        self.photo = jsonSerializedUser[@"user"][@"picture"][@"large"];
+    }
+    return self;
+}
+
++ (void)saveToFriendsMarkedUsersInArray:(NSArray<User *> *)usersArray {
+    if (usersArray.count > 0) {
+        for (User *user in usersArray) {
+            if (user.isFriend.boolValue) {
+                [[CoreDataStack sharedStack].managedObjectContext insertObject:user];
+            }
+        }
+        [[CoreDataStack sharedStack] saveManagedObjectContext];
+    }
 }
 
 - (void)saveChanges {

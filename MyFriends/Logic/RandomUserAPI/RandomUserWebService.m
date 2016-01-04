@@ -38,7 +38,6 @@
                  completion(users, nil);
                  [SVProgressHUD dismiss];
              });
-             [SVProgressHUD dismiss];
          } failure:^(NSURLSessionTask *operation, NSError *error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     completion(nil, error);

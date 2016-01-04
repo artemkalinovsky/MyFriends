@@ -9,5 +9,7 @@ target 'MyFriends' do
 end
 
 target 'MyFriendsTests' do
-
+  pod 'AFNetworking'
+  pod 'Nocilla'
+  pod 'AGAsyncTestHelper'
 end
